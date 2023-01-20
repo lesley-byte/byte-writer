@@ -1,2 +1,2 @@
--- DROP DATABASE IF EXISTS `nameOfDatabase`;
--- CREATE DATABASE `nameOfDatabase`;
+DROP DATABASE IF EXISTS writer_db;
+CREATE DATABASE writer_db;
