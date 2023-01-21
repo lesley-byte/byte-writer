@@ -61,4 +61,13 @@ router.get('/review/:id', async (req, res) => {
   }
 });
 
+// Login route
+router.get('/login', async (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+});
+
 module.exports = router;
