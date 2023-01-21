@@ -4,7 +4,6 @@ const apiRoutes = require('./api');
 const homeRoutes = require('./home-routes');
 const categoryRoutes = require('./category-routes');
 const commentRoutes = require('./comment-routes');
-const reviewRoutes = require('./review-routes');
 const tagsRoutes = require('./tag-routes');
 const userRoutes = require('./user-routes');
 

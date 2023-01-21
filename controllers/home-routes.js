@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Review, Comment } = require('../models');
+const withAuth = require('../utils/auth');
 
 // GET all reviews
 router.get('/', async (req, res) => {
@@ -32,7 +33,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET one review
-router.get('/review/:id', async (req, res) => {
+router.get('/review/:id', withAuth, async (req, res) => {
   try {
     const dbReviewData = await Review.findByPk(req.params.id, {
       include: [
@@ -63,11 +64,15 @@ router.get('/review/:id', async (req, res) => {
 
 // Login route
 router.get('/login', async (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
+  try {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+    res.render('login');
+  } catch (err) {
+    res.status(500).json(err);
   }
-  res.render('login');
 });
 
 module.exports = router;
