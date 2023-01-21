@@ -1,8 +1,14 @@
 <section class="card">
+    <!-- link to review-details page -->
+    <a href="/review/{{id}}">
     <p>This is review-details {{title}}</p>
+</a>
 <!-- log corresponding username from User table -->
+<a href="/user/{{user_id}}">
 <p> by: {{user.username}}</p>
+</a>
+<!-- log corresponding category name from Category table -->
+<a href="/category/{{category_id}}"
 <p> category: {{category.category_name}}</p>
-{{log category.[0]}}
-
+</a>
 </section>
