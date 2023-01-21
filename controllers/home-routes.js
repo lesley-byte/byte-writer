@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Review, Comment } = require('../models');
+const { User, Review, Comment, Category } = require('../models');
 const withAuth = require('../utils/auth');
 
 // GET all reviews
@@ -18,6 +18,10 @@ router.get('/', async (req, res) => {
             model: User,
             attributes: ['username'],
           },
+        },
+        {
+          model: Category,
+          attributes: ['category_name'],
         },
       ],
     });

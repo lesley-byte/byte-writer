@@ -18,6 +18,10 @@ router.get('/', async (req, res) => {
             attributes: ['username'],
           },
         },
+        {
+          model: Category,
+          attributes: ['category_name'],
+        },
       ],
     });
     const reviews = dbReviewData.map((review) => review.get({ plain: true }));
