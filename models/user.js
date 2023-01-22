@@ -1,9 +1,6 @@
-// This will set up the user model for the database, the user will have an id number, username, password, and email.
-// and the user will be able to login and signup. and the user will be able to create a review and comment on a review.
-//
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
+const sequelize = require('../config/connection');
 
 class User extends Model {
   checkPassword(loginPw) {
@@ -22,7 +19,6 @@ User.init(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -36,7 +32,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [4],
+        len: [6],
       },
     },
   },
@@ -45,13 +41,6 @@ User.init(
       async beforeCreate(newUserData) {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
-      },
-      async beforeUpdate(updatedUserData) {
-        updatedUserData.password = await bcrypt.hash(
-          updatedUserData.password,
-          10
-        );
-        return updatedUserData;
       },
     },
     sequelize,

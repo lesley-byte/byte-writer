@@ -18,6 +18,5 @@ const seedAll = async () => {
   // close the connection to the database
   process.exit(0);
 };
-
 // call the function to seed the database
 seedAll();
