@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Review, Comment } = require('../models');
 
 // GET all comments
-router.get('/', async (req, res) => {
+router.get('/comments', async (req, res) => {
   try {
     const dbCommentData = await Comment.findAll({
       include: [
@@ -12,7 +12,11 @@ router.get('/', async (req, res) => {
         },
         {
           model: Review,
-          attributes: ['title'],
+          attributes: ['title', 'review_text', 'user_id', 'category_id'],
+          include: {
+            model: User,
+            attributes: ['username'],
+          },
         },
       ],
     });
@@ -30,7 +34,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET one comment
-router.get('/:id', async (req, res) => {
+router.get('/comments/:id', async (req, res) => {
   try {
     const dbCommentData = await Comment.findByPk(req.params.id, {
       include: [
@@ -40,7 +44,11 @@ router.get('/:id', async (req, res) => {
         },
         {
           model: Review,
-          attributes: ['title'],
+          attributes: ['title', 'review_text', 'user_id', 'category_id'],
+          include: {
+            model: User,
+            attributes: ['username'],
+          },
         },
       ],
     });

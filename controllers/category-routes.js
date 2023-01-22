@@ -2,13 +2,17 @@ const router = require('express').Router();
 const { Category, Review, Comment } = require('../models');
 
 // GET all categories
-router.get('/', async (req, res) => {
+router.get('/categories', async (req, res) => {
   try {
     const dbCategoryData = await Category.findAll({
       include: [
         {
           model: Review,
-          attributes: ['id', 'title', 'review_text', 'user_id'],
+          attributes: ['title', 'review_text', 'user_id', 'category_id'],
+          include: {
+            model: User,
+            attributes: ['username'],
+          },
         },
       ],
     });
@@ -26,13 +30,17 @@ router.get('/', async (req, res) => {
 });
 
 // GET one category
-router.get('/:id', async (req, res) => {
+router.get('/categories/:id', async (req, res) => {
   try {
     const dbCategoryData = await Category.findByPk(req.params.id, {
       include: [
         {
           model: Review,
-          attributes: ['id', 'title', 'review_text', 'user_id'],
+          attributes: ['title', 'review_text', 'user_id', 'category_id'],
+          include: {
+            model: User,
+            attributes: ['username'],
+          },
         },
       ],
     });

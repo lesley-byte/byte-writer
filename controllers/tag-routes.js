@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { User, Review, Comment } = require('../models');
+const { User, Review, Comment, Category, Tag } = require('../models');
 
-// GET all reviews
-router.get('/', async (req, res) => {
+// GET all tags
+router.get('/tags', async (req, res) => {
   try {
-    const dbReviewData = await Review.findAll({
+    const dbTagData = await Tag.findAll({
       include: [
         {
           model: User,
@@ -18,11 +18,15 @@ router.get('/', async (req, res) => {
             attributes: ['username'],
           },
         },
+        {
+          model: Category,
+          attributes: ['category_name'],
+        },
       ],
     });
-    const reviews = dbReviewData.map((review) => review.get({ plain: true }));
-    res.render('homepage', {
-      reviews,
+    const tags = dbTagData.map((tag) => tag.get({ plain: true }));
+    res.render('tags', {
+      tags,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -31,10 +35,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one review
-router.get('/review/:id', async (req, res) => {
+// GET one tag
+router.get('/tags/:id', async (req, res) => {
   try {
-    const dbReviewData = await Review.findByPk(req.params.id, {
+    const dbTagData = await Tag.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -48,11 +52,15 @@ router.get('/review/:id', async (req, res) => {
             attributes: ['username'],
           },
         },
+        {
+          model: Category,
+          attributes: ['category_name'],
+        },
       ],
     });
-    const review = dbReviewData.get({ plain: true });
-    res.render('review', {
-      review,
+    const tag = dbTagData.get({ plain: true });
+    res.render('tag', {
+      tag,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {

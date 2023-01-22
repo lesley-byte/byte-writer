@@ -1,17 +1,12 @@
 <section class="container">
     <p>This is review.handlebars</p>
     <h3 class="review-title">{{review.title}}</h3>
-    <p class="review-text">{{review.text}}</p>
-    <p class="review-author">Posted by {{review.user_id}}</p>
-{{#if loggedIn}}
-<section class="flex-row justify-center">
-    {{#each reviews as |review|}}
-    {{> review}}
-    {{/each}}
-    </section>
-    </section>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
+    <p class="review-text">{{review.review_text}}</p>
+    {{ log review}}
+    <p class="review-author">Posted by {{review.user.username}}
+{{ log review }}
+    <p class="review-category">Category: {{review.category.category_name}}</p>
+
+    </p>
 </section>
 </section>

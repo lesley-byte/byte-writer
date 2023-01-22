@@ -1,5 +1,3 @@
-<section class="container">
-
-    <h3 class="category-name">{{category.category_name}}</h3>
-    
-</section>
+{{#each categories as |category|}}
+{{> category-details}}
+{{/each}}

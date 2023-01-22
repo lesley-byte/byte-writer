@@ -53,6 +53,10 @@ router.get('/review/:id', withAuth, async (req, res) => {
             attributes: ['username'],
           },
         },
+        {
+          model: Category,
+          attributes: ['category_name'],
+        },
       ],
     });
     const review = dbReviewData.get({ plain: true });
