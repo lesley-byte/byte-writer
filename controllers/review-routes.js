@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Review, Category, Comment } = require('../models');
 
 // GET all reviews
-router.get('/reviews', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const dbReviewData = await Review.findAll({
       include: [

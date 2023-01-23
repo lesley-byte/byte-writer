@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Review, Comment, Category } = require('../models');
 const withAuth = require('../utils/auth');
 
-// GET all reviews
+// GET all reviews for homepage
 router.get('/', async (req, res) => {
   try {
     const dbReviewData = await Review.findAll({
