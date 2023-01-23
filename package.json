@@ -4,7 +4,7 @@
   "description": "This is a 🔥template🔥 for a Node.js Express server with Sequelize and MySQL.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server.js",
     "seed": "node seeds/seed.js"
   },
@@ -30,5 +30,17 @@
     "handlebars": "^4.7.7",
     "mysql2": "^3.0.1",
     "sequelize": "^6.28.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^29.3.1",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/__tests__/setup.js"
+    ]
   }
 }

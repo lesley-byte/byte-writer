@@ -36,7 +36,7 @@ router.get('/reviews', async (req, res) => {
 });
 
 // GET one review
-router.get('/reviews/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const dbReviewData = await Review.findByPk(req.params.id, {
       include: [

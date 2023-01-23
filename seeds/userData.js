@@ -2,54 +2,14 @@ const { User } = require('../models');
 // userData is an array of objects that will be users.
 const userData = [
   {
-    username: 'johndoe',
-    email: 'johndoe@johndoe.com',
-    password: 'password123',
+    username: 'lesley',
+    email: 'lesley@lesley.com',
+    password: '$2b$10$W04OSyZoB.Yl.4z6wrnKfuuZUgPfs2qZpNsrnluqjrX7C4fs54OfO',
   },
   {
-    username: 'janedoe',
-    email: 'janedoe@janedoe.com',
-    password: 'password123',
-  },
-  {
-    username: 'barry',
-    email: 'barry@barry.com',
-    password: 'password123',
-  },
-  {
-    username: 'jimmy',
-    email: 'jimmy@jimmy.com',
-    password: 'password',
-  },
-  {
-    username: 'jane',
-    email: 'jane@jane.com',
-    password: 'password',
-  },
-  {
-    username: 'joe',
-    email: 'joe@joe.com',
-    password: 'password',
-  },
-  {
-    username: 'jim',
-    email: 'jim@jim.com',
-    password: 'password',
-  },
-  {
-    username: 'barbara',
-    email: 'barbara@barbara.com',
-    password: 'password',
-  },
-  {
-    username: 'Diane',
-    email: 'Diane@Diane.com',
-    password: 'password',
-  },
-  {
-    username: 'Tom',
-    email: 'Tom@Tom.com',
-    password: 'password',
+    username: 'ron',
+    email: 'ron@ron.com',
+    password: '$2b$10$W4B8iZ1RyqVRzQRqgmaAd.2S6mqFSdYFNfuGIpjGwRVC6vWC7rlZG',
   },
 ];
 //
