@@ -1,3 +1,6 @@
 <section class="container">
     <p>This is comment.handlebars</p>
+    {{#each comments as |comment|}}
+        {{> comment-details}}
+    {{/each}}
 </section>

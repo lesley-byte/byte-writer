@@ -1,3 +1,6 @@
 <section class="container">
     <p>This is user.handlebars</p>
+    {{#each users as |user|}}
+        {{> user-details}}
+    {{/each}}
 </section>

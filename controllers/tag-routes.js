@@ -5,28 +5,10 @@ const { User, Review, Comment, Category, Tag } = require('../models');
 router.get('/', async (req, res) => {
   try {
     const dbTagData = await Tag.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['username'],
-        },
-        {
-          model: Comment,
-          attributes: ['comment_text', 'user_id', 'review_id'],
-          include: {
-            model: User,
-            attributes: ['username'],
-          },
-        },
-        {
-          model: Category,
-          attributes: ['category_name'],
-        },
-      ],
     });
-    const tags = dbTagData.map((tag) => tag.get({ plain: true }));
-    res.render('tags', {
-      tags,
+    const tag = dbTagData.map((tag) => tag.get({ plain: true }));
+    res.render('tag', {
+      tag,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -39,24 +21,6 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const dbTagData = await Tag.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['username'],
-        },
-        {
-          model: Comment,
-          attributes: ['comment_text', 'user_id', 'review_id'],
-          include: {
-            model: User,
-            attributes: ['username'],
-          },
-        },
-        {
-          model: Category,
-          attributes: ['category_name'],
-        },
-      ],
     });
     const tag = dbTagData.get({ plain: true });
     res.render('tag', {

@@ -20,11 +20,9 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-    const comments = dbCommentData.map((comment) =>
-      comment.get({ plain: true })
-    );
-    res.render('comments', {
-      comments,
+    const comment = dbCommentData.map((comment)=> comment.get({ plain: true }));
+    res.render('comment', {
+      comment,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {

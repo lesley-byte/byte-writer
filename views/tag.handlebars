@@ -1,3 +1,6 @@
 <section class="container">
     <p>This is tag.handlebars</p>
+    {{#each tags as |tag|}}
+        {{> tag-details}}
+    {{/each}}
 </section>
