@@ -70,6 +70,44 @@ router.get('/review/:id', withAuth, async (req, res) => {
   }
 });
 
+// Get dashboard
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    const dbReviewData = await Review.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+        {
+          model: Comment,
+          attributes: ['comment_text', 'user_id', 'review_id'],
+          include: {
+            model: User,
+            attributes: ['username'],
+          },
+        },
+        {
+          model: Category,
+          attributes: ['category_name'],
+        },
+      ],
+    });
+    const reviews = dbReviewData.map((review) => review.get({ plain: true }));
+    res.render('dashboard', {
+      reviews,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 // Login route
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {

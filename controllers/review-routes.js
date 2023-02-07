@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Review, Category, Comment } = require('../models');
+const { User, Review, Category, Comment, Tag } = require('../models');
 
 // GET all reviews
 router.get('/', async (req, res) => {
@@ -21,6 +21,9 @@ router.get('/', async (req, res) => {
             model: User,
             attributes: ['username'],
           },
+        },
+        {
+          model: Tag,
         },
       ],
     });
@@ -56,6 +59,9 @@ router.get('/:id', async (req, res) => {
             attributes: ['username'],
           },
         },
+        {
+          model: Tag,
+        },
       ],
     });
     const review = dbReviewData.get({ plain: true });
@@ -68,5 +74,15 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// GET add review route
+router.get('/add', (req, res) => {
+  res.render('add-review', {
+    loggedIn: req.session.loggedIn,
+  });
+});
+
+// Get
+
 
 module.exports = router;
