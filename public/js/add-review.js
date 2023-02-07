@@ -1,0 +1,31 @@
+const addReviewFormHandler = async (event) => {
+  event.preventDefault();
+
+  const title = document.querySelector('#review-title').value;
+  const review_text = document.querySelector('#review-text').value;
+  const user_id = document.querySelector('#user-id').value;
+  const category_id = document.querySelector('#review-category').value;
+
+  await fetch('/api/reviews', {
+    method: 'POST',
+    body: JSON.stringify({
+      title,
+      review_text,
+      user_id,
+      category_id,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    alert('Failed to add review');
+  }
+};
+
+document
+  .querySelector('.add-review-form')
+  .addEventListener('submit', addReviewFormHandler);
