@@ -6,9 +6,9 @@ router.get('/', async (req, res) => {
   try {
     const dbTagData = await Tag.findAll({
     });
-    const tag = dbTagData.map((tag) => tag.get({ plain: true }));
+    const tags = dbTagData.map((tag) => tag.get({ plain: true }));
     res.render('tag', {
-      tag,
+      tags,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {

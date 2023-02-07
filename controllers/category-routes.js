@@ -16,11 +16,11 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-    const category = dbCategoryData.map((category) =>
+    const categories = dbCategoryData.map((category) =>
       category.get({ plain: true })
     );
     res.render('category', {
-      category,
+      categories,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
