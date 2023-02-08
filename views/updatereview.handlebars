@@ -1,0 +1,19 @@
+<section>
+    <h1>Update Review</h1>
+    <form action="/reviews/update/{{review._id}}" method="POST" class="update-review-form">
+        <input type="hidden" name="userId" id="userId" value="{{userId}}">
+        <label for="review-title">Review Title</label>
+        <input type="text" name="review_title" id="review-title" value="{{review.title}}">
+        <label for="review-text">Review Text</label>
+        <input type="text" name="review_text" id="review-text" value="{{review.text}}">
+        <label for="review-category">Review Category</label>
+        <select id="review-category" name="review_category">
+            {{#each categories as |category|}}
+            <option value="{{id}}">{{category_name}}</option>
+            {{/each}}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<script src="/js/update-review.js"></script>
