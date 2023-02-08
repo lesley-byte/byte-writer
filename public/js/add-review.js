@@ -19,11 +19,7 @@ const addReviewFormHandler = async (event) => {
     },
   });
 
-  if (response.ok) {
-    document.location.reload();
-  } else {
-    alert('Failed to add review');
-  }
+  document.location.reload('/dashboard');
 };
 
 document
