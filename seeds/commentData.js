@@ -3,12 +3,12 @@ const { Comment } = require('../models');
 const commentData = [
   {
     comment_text: 'I love this product!',
-    user_id: 1,
+    userId: 1,
     review_id: 1,
   },
   {
     comment_text: 'I love this product!',
-    user_id: 2,
+    userId: 2,
     review_id: 2,
   }
 ];

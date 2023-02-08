@@ -2,9 +2,8 @@
     <p>This is review.handlebars</p>
     <h3 class="review-title">{{review.title}}</h3>
     <p class="review-text">{{review.review_text}}</p>
-    {{ log review}}
     <p class="review-author">Posted by {{review.user.username}}
-{{ log review }}
+
     <p class="review-category">Category: {{review.category.category_name}}</p>
 
     </p>
@@ -23,7 +22,8 @@
 <section>
     <h2>Add a comment</h2>
     <form action="/comments" method="POST" class="add-comment-form">
-        <input type="hidden" name="postId" value="{{postId}}">
+        <input type="hidden" name="userId" id="userId" value="{{userId}}">
+        <input type="hidden" name="review-id" id="review-id" value="{{review.id}}">
         <div>
             <label for="text"> Comment Text</label>
             <input type="text" name="comment_text" id="comment-text">

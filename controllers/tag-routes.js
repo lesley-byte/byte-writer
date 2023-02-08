@@ -10,6 +10,8 @@ router.get('/', async (req, res) => {
     res.render('tag', {
       tags,
       loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+      username: req.session.username,
     });
   } catch (err) {
     console.log(err);
@@ -26,6 +28,8 @@ router.get('/:id', async (req, res) => {
     res.render('tag', {
       tag,
       loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+      username: req.session.username,
     });
   } catch (err) {
     console.log(err);

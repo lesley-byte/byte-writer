@@ -6,11 +6,11 @@ const Review = require('./Review');
 const Tag = require('./Tag');
 // indicate the relationship between the models... hasMany, belongsTo, etc. as well as the foreign key
 User.hasMany(Review, {
-  foreignKey: 'user_id',
+  foreignKey: 'userId',
   onDelete: 'CASCADE',
 });
 Review.belongsTo(User, {
-  foreignKey: 'user_id',
+  foreignKey: 'userId',
 });
 Category.hasMany(Review, {
   foreignKey: 'category_id',
@@ -27,11 +27,11 @@ Comment.belongsTo(Review, {
   foreignKey: 'review_id',
 });
 User.hasMany(Comment, {
-  foreignKey: 'user_id',
+  foreignKey: 'userId',
   onDelete: 'CASCADE',
 });
 Comment.belongsTo(User, {
-  foreignKey: 'user_id',
+  foreignKey: 'userId',
 });
 
 // export the models with module.exports

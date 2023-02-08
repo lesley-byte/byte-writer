@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         },
         {
           model: Review,
-          attributes: ['title', 'review_text', 'user_id', 'category_id'],
+          attributes: ['title', 'review_text', 'userId', 'category_id'],
           include: {
             model: User,
             attributes: ['username'],
@@ -24,6 +24,8 @@ router.get('/', async (req, res) => {
     res.render('comment', {
       comments,
       loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+      username: req.session.username,
     });
   } catch (err) {
     console.log(err);
@@ -42,7 +44,7 @@ router.get('/:id', async (req, res) => {
         },
         {
           model: Review,
-          attributes: ['title', 'review_text', 'user_id', 'category_id'],
+          attributes: ['title', 'review_text', 'userId', 'category_id'],
           include: {
             model: User,
             attributes: ['username'],
@@ -54,6 +56,8 @@ router.get('/:id', async (req, res) => {
     res.render('comment', {
       comment,
       loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+      username: req.session.username,
     });
   } catch (err) {
     console.log(err);

@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['comment_text', 'user_id', 'review_id'],
+          attributes: ['comment_text', 'userId', 'review_id'],
           include: {
             model: User,
             attributes: ['username'],
@@ -26,9 +26,12 @@ router.get('/', async (req, res) => {
       ],
     });
     const reviews = dbReviewData.map((review) => review.get({ plain: true }));
+
     res.render('homepage', {
       reviews,
       loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+      username: req.session.username,
     });
   } catch (err) {
     console.log(err);
@@ -47,7 +50,7 @@ router.get('/review/:id', withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['comment_text', 'user_id', 'review_id'],
+          attributes: ['comment_text', 'userId', 'review_id'],
           include: {
             model: User,
             attributes: ['username'],
@@ -75,7 +78,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const dbReviewData = await Review.findAll({
       where: {
-        user_id: req.session.user_id,
+        userId: req.session.userId,
       },
       include: [
         {
@@ -84,7 +87,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['comment_text', 'user_id', 'review_id'],
+          attributes: ['comment_text', 'userId', 'review_id'],
           include: {
             model: User,
             attributes: ['username'],

@@ -3,7 +3,7 @@ const addReviewFormHandler = async (event) => {
 
   const title = document.querySelector('#review-title').value;
   const review_text = document.querySelector('#review-text').value;
-  const user_id = document.querySelector('#user-id').value;
+  const userId = document.querySelector('#user-id').value;
   const category_id = document.querySelector('#review-category').value;
 
   await fetch('/api/reviews', {
@@ -11,7 +11,7 @@ const addReviewFormHandler = async (event) => {
     body: JSON.stringify({
       title,
       review_text,
-      user_id,
+      userId,
       category_id,
     }),
     headers: {

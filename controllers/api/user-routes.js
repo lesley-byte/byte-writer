@@ -11,6 +11,8 @@ router.get('/', async (req, res) => {
     res.render('user', {
         user,
         loggedIn: req.session.loggedIn,
+        userId: req.session.userId,
+        username: req.session.username,
         });
   } catch (err) {
     console.log(err);
@@ -28,6 +30,8 @@ router.get('/:id', async (req, res) => {
     res.render('user', {
         user,
         loggedIn: req.session.loggedIn,
+        userId: req.session.userId,
+        username: req.session.username,
         });
   } catch (err) {
     console.log(err);
@@ -43,9 +47,12 @@ router.post('/', async (req, res) => {
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
+
     });
 
     req.session.save(() => {
+      req.session.userId = dbUserData.id;
+      req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
       res.status(200).json(dbUserData);
@@ -72,7 +79,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await dbUserData.checkPassword(req.body.password);
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -80,8 +87,9 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
-
     req.session.save(() => {
+      req.session.userId = dbUserData.id;
+      req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
       res

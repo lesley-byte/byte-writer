@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { User, Review, Category, Comment, Tag } = require('../models');
+const withAuth = require('../utils/auth');
 
 // GET all reviews
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const dbReviewData = await Review.findAll({
       include: [
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['comment_text', 'user_id', 'review_id'],
+          attributes: ['comment_text', 'userId', 'review_id'],
           include: {
             model: User,
             attributes: ['username'],
@@ -28,9 +29,12 @@ router.get('/', async (req, res) => {
       ],
     });
     const reviews = dbReviewData.map((review) => review.get({ plain: true }));
+    console.log(req.session.userId);
     res.render('homepage', {
       reviews,
       loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+      username: req.session.username,
     });
   } catch (err) {
     console.log(err);
@@ -39,7 +43,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET one review
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   try {
     const dbReviewData = await Review.findByPk(req.params.id, {
       include: [
@@ -53,7 +57,7 @@ router.get('/:id', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['comment_text', 'user_id', 'review_id'],
+          attributes: ['comment_text', 'userId', 'review_id'],
           include: {
             model: User,
             attributes: ['username'],
@@ -68,7 +72,11 @@ router.get('/:id', async (req, res) => {
     res.render('review', {
       review,
       loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+      username: req.session.username,
+      session: req.session,
     });
+console.log(req.session.loggedIn);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -76,9 +84,10 @@ router.get('/:id', async (req, res) => {
 });
 
 // GET add review route
-router.get('/add', (req, res) => {
+router.get('/add', withAuth, (req, res) => {
   res.render('add-review', {
     loggedIn: req.session.loggedIn,
+    userId: req.session.userId,
   });
 });
 
