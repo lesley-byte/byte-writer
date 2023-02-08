@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         },
         {
           model: Review,
-          attributes: ['title', 'review_text', 'userId', 'category_id'],
+          attributes: ['title', 'review_text', 'userId', 'category_id', 'date'],
           include: {
             model: User,
             attributes: ['username'],
@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
         },
         {
           model: Review,
-          attributes: ['title', 'review_text', 'userId', 'category_id'],
+          attributes: ['title', 'review_text', 'userId', 'category_id', 'date'],
           include: {
             model: User,
             attributes: ['username'],

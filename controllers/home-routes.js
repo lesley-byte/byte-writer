@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['comment_text', 'userId', 'review_id'],
+          attributes: ['comment_text', 'userId', 'review_id', 'date'],
           include: {
             model: User,
             attributes: ['username'],
@@ -50,7 +50,7 @@ router.get('/review/:id', withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['comment_text', 'userId', 'review_id'],
+          attributes: ['comment_text', 'userId', 'review_id', 'date'],
           include: {
             model: User,
             attributes: ['username'],
@@ -87,7 +87,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['comment_text', 'userId', 'review_id'],
+          attributes: ['comment_text', 'userId', 'review_id', 'date'],
           include: {
             model: User,
             attributes: ['username'],

@@ -17,7 +17,7 @@ router.get('/', withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['comment_text', 'userId', 'review_id'],
+          attributes: ['comment_text', 'userId', 'review_id', 'date'],
           include: {
             model: User,
             attributes: ['username'],
@@ -57,7 +57,7 @@ router.get('/:id', withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['comment_text', 'userId', 'review_id'],
+          attributes: ['comment_text', 'userId', 'review_id', 'date'],
           include: {
             model: User,
             attributes: ['username'],

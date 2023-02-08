@@ -7,7 +7,7 @@
             <ul>
                 {{#each reviews}}
                 <li>
-                    <a href="/review/{{id}}"  class="btn btn-primary">{{this.title}}</a>
+                    <a href="/review/{{id}}"  class="btn btn-primary">{{this.title}} -{{format_date date}}</a>
                     <a href="/reviews/update/{{id}}" class="btn btn-primary">Edit</a>
                     <a href="/reviews/delete/{{id}}" class="btn btn-danger">Delete</a>
                 </li>
