@@ -11,28 +11,30 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="bg-info-subtle text-info-emphasis">
     <header>
-        <h1>Welcome to Tech Post</h1>
+        <h1 class="bg-info-subtle rounded shadow-lg border border-info p-3">Welcome to Tech Post</h1>
     </header>
-    <nav>
-        <a href="/" class="btn">Home</a>
+    <nav class="navbar navbar-expand-lg bg-info ">
+         <ul class="navbar-nav">
+        <li class="nav-item"><a href="/" class="nav-link btn btn-info text-info-emphasis fw-bold">Home</a></li>
         {{#if loggedIn}}
-        <button id="logout" class="btn-no-style">Logout</button>
-        <a href="/reviews" class="btn">Reviews</a>
-        <a href="/categories" class="btn">Categories</a>
-        <a href="/comments" class="btn">Comments</a>
-        <a href="/dashboard" class="btn">Dashboard</a>
-        <a href="/tags" class="btn">Tags</a>
+        <li class="nav-item"><button id="logout" class="nav-link btn btn-info text-info-emphasis fw-bold">Logout</button></li>
+        <li class="nav-item"><a href="/reviews" class="nav-link btn btn-info text-info-emphasis fw-bold">Reviews</a></li>
+        <li class="nav-item"><a href="/categories" class="nav-link btn btn-info text-info-emphasis fw-bold">Categories</a></li>
+        <li class="nav-item"><a href="/comments" class="nav-link btn btn-info text-info-emphasis fw-bold">Comments</a></li>
+        <li class="nav-item"><a href="/dashboard" class="nav-link btn btn-info text-info-emphasis fw-bold">Dashboard</a></li>
+        <li class="nav-item"><a href="/tags" class="nav-link btn btn-info text-info-emphasis fw-bold">Tags</a></li>
         {{else}}
-        <a href="/login" class="btn">Login</a>
+        <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
         {{/if}}
+        </ul>
     </nav>
     <main>
         <aside>
             <h2>Feel free to post</h2>
             <p>Post your thoughts and opinions on the latest tech news</p>
-            <p>This is views/layouts/main.handlebars</p>
+            <p class="bg-info-subtle">This is views/layouts/main.handlebars</p>
         </aside>
         <div class="something">
             {{{body}}}
