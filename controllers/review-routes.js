@@ -68,9 +68,9 @@ router.get('/:id', withAuth, async (req, res) => {
         // },
       ],
     });
-    const review = dbReviewData.get({ plain: true });
+    const reviews = dbReviewData.get({ plain: true });
     res.render('review', {
-      review,
+      reviews,
       loggedIn: req.session.loggedIn,
       userId: req.session.userId,
       username: req.session.username,

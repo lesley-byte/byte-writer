@@ -10,10 +10,11 @@
 </section>
 <section>
     <h2>Comments made on this review:</h2>
-    {{#each comments as |comment|}}
+    {{log review}}
+    {{#each review.comments as |comment|}}
     <div class="comment">
-        <p class="comment-text">{{comment.comment_text}}</p>
-        <p class="comment-author">Posted by {{comment.user.username}}</p>
+        <p class="comment-text">{{comment_text}}</p>
+        <p class="comment-author">Posted by {{user.username}}</p>
     </div>
     {{/each}}
 

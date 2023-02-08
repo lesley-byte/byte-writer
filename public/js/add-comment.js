@@ -17,7 +17,7 @@ const addCommentFormHandler = async (event) => {
     },
   });
 
-  // document.location.reload();
+  document.location.reload();
 };
 
 document
