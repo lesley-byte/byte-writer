@@ -3,7 +3,7 @@ const addReviewFormHandler = async (event) => {
 
   const title = document.querySelector('#review-title').value;
   const review_text = document.querySelector('#review-text').value;
-  const userId = document.querySelector('#user-id').value;
+  const userId = document.querySelector('#userId').value;
   const category_id = document.querySelector('#review-category').value;
 
   await fetch('/api/reviews', {
