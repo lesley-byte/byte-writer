@@ -91,6 +91,86 @@ router.get('/add', withAuth, (req, res) => {
   });
 });
 
-// Get
+// Get update review route
+router.get('/update/:id', withAuth, async (req, res) => {
+  try {
+    const dbReviewData = await Review.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+        {
+          model: Category,
+          attributes: ['category_name'],
+        },
+        {
+          model: Comment,
+          attributes: ['comment_text', 'userId', 'review_id'],
+          include: {
+            model: User,
+            attributes: ['username'],
+          },
+        },
+        // {
+        //   model: Tag,
+        // },
+      ],
+    });
+    const reviews = dbReviewData.get({ plain: true });
+    res.render('updatereview', {
+      reviews,
+      loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+      username: req.session.username,
+      session: req.session,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// get delete review route
+router.get('/delete/:id', withAuth, async (req, res) => {
+  try {
+    const dbReviewData = await Review.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+        {
+          model: Category,
+          attributes: ['category_name'],
+        },
+        {
+          model: Comment,
+          attributes: ['comment_text', 'userId', 'review_id'],
+          include: {
+            model: User,
+            attributes: ['username'],
+          },
+        },
+        // {
+        //   model: Tag,
+        // },
+      ],
+    });
+
+    const reviews = dbReviewData.get({ plain: true });
+    res.render('deletereview', {
+      reviews,
+      loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
+      username: req.session.username,
+      session: req.session,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;

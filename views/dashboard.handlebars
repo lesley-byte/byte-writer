@@ -7,9 +7,9 @@
             <ul>
                 {{#each reviews}}
                 <li>
-                    <a href="/reviews/{{this._id}}"  class="btn btn-primary">{{this.title}}</a>
-                    <a href="/reviews/update/{{this._id}}" class="btn btn-primary">Edit</a>
-                    <a href="/reviews/delete/{{this._id}}" class="btn btn-danger">Delete</a>
+                    <a href="/reviews/{{id}}"  class="btn btn-primary">{{this.title}}</a>
+                    <a href="/reviews/update/{{id}}" class="btn btn-primary">Edit</a>
+                    <a href="/reviews/delete/{{id}}" class="btn btn-danger">Delete</a>
                 </li>
                 {{/each}}
             </ul>
