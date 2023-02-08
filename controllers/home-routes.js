@@ -95,13 +95,18 @@ router.get('/dashboard', withAuth, async (req, res) => {
         },
         {
           model: Category,
-          attributes: ['category_name'],
+          attributes: ['category_name', 'id'],
         },
       ],
     });
     const reviews = dbReviewData.map((review) => review.get({ plain: true }));
+    const dbCategoryData = await Category.findAll();
+    const categories = dbCategoryData.map((category) =>
+      category.get({ plain: true })
+    );
     res.render('dashboard', {
       reviews,
+      categories,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {

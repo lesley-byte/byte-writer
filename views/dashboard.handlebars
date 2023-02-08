@@ -28,14 +28,21 @@
 </section>
 <section>
     <h2>Add a Review</h2>
-    <form action="/reviews" method="POST">
+    <form action="/reviews" method="POST" class="add-review-form">
         <input type="hidden" name="userId" id="userId" value="{{userId}}">
         <label for="review-title">Review Title</label>
         <input type="text" name="review_title" id="review-title">
         <label for="review-text">Review Text</label>
         <input type="text" name="review_text" id="review-text">
+
+
         <label for="review-category">Review Category</label>
-        <input type="text" name="review_category" id="review-category">
+        <select id="review-category" name="review_category">
+            {{#each categories as |category|}}
+            <option value="{{category}}">{{category_name}}</option>
+            {{/each}}
+        </select>
+
         <button type="submit">Submit</button>
     </form>
 </section>
