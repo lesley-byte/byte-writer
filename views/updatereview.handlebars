@@ -3,11 +3,12 @@
     <h2>Update Review:  {{reviews.title}}</h2>
     <p> in  {{reviews.category.category_name}}</p>
     <p> Here you can update your review</p>
+    {{log reviews}}
 
-    <form action="/reviews/update/{{review._id}}" method="POST" class="update-review-form">
-
+    <form action="/reviews/update/{{reviews.id}}" method="POST" class="update-review-form">
+<input type="hidden" name="reviewId" id="reviewId" value="{{reviews.id}}">
         <label for="review-text">New review text:</label>
-        <textarea type="text" name="review_text" id="review-text" value="{{review.text}}">
+        <textarea type="text" name="review-text" id="review-text" value="{{review.text}}">
         </textarea>
         <button class="update-review-btn" type="submit">Submit</button>
     </form>
