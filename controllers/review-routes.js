@@ -22,9 +22,9 @@ router.get('/', async (req, res) => {
             attributes: ['username'],
           },
         },
-        {
-          model: Tag,
-        },
+        // {
+        //   model: Tag,
+        // },
       ],
     });
     const reviews = dbReviewData.map((review) => review.get({ plain: true }));
@@ -59,9 +59,9 @@ router.get('/:id', async (req, res) => {
             attributes: ['username'],
           },
         },
-        {
-          model: Tag,
-        },
+        // {
+        //   model: Tag,
+        // },
       ],
     });
     const review = dbReviewData.get({ plain: true });
@@ -83,6 +83,5 @@ router.get('/add', (req, res) => {
 });
 
 // Get
-
 
 module.exports = router;
