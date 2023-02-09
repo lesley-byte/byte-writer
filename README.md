@@ -20,7 +20,7 @@ run `npm i` to install dependencies and set up a .env file with your database cr
 ## Usage
 Run npm start to start the server and navigate to localhost:3001 to view the site.
 ## Website  
-[Deployed Site]()
+[Deployed Site](https://intense-brushlands-19186.herokuapp.com)
 ## Screenshot
 ![Screenshot](./public/images/screenshot.png)
 ## Testing
