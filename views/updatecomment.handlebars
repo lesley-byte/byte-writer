@@ -1,0 +1,14 @@
+<section>
+    <h2>Update Comment:  {{comment.comment_text}}</h2>
+    <p> Here you can update your comment</p>
+    {{log comment}}
+    <form class="update-comment-form">
+        <input type="hidden" name="commentId" id="commentId" value="{{comment.id}}">
+        <label for="comment-text">New comment text:</label>
+        <textarea type="text" name="comment-text" id="comment-text" value="{{comment.comment_text}}">
+        </textarea>
+        <button class="update-comment-btn" type="submit">Submit</button>
+    </form>
+</section>
+
+<script src="/js/update-comment.js"></script>
