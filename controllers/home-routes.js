@@ -104,9 +104,18 @@ router.get('/dashboard', withAuth, async (req, res) => {
     const categories = dbCategoryData.map((category) =>
       category.get({ plain: true })
     );
+    const dbCommentsData = await Comment.findAll({
+      where: {
+        userId: req.session.userId,
+      },
+    });
+    const comments = dbCommentsData.map((comment) =>
+      comment.get({ plain: true })
+    );
     res.render('dashboard', {
       reviews,
       categories,
+      comments,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -114,7 +123,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 // Login route
 router.get('/login', (req, res) => {
