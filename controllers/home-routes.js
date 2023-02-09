@@ -108,7 +108,14 @@ router.get('/dashboard', withAuth, async (req, res) => {
       where: {
         userId: req.session.userId,
       },
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
     });
+
     const comments = dbCommentsData.map((comment) =>
       comment.get({ plain: true })
     );

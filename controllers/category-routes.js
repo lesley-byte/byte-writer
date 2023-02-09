@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { Category, Review, Comment, User } = require('../models');
+const withAuth = require('../utils/auth');
 
 // GET all categories
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const dbCategoryData = await Category.findAll({
       include: [
@@ -32,7 +33,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET one category
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   try {
     const dbCategoryData = await Category.findByPk(req.params.id, {
       include: [
