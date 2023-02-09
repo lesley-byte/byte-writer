@@ -3,12 +3,12 @@
     <p> Here you can see your reviews and comments as well as an option to add new reviews</p>
     <div class="row">
         <div class="col-md-6">
-            <h2>Reviews</h2>
+            <h2>My Reviews</h2>
             <ul>
                 {{#each reviews}}
-                <li>
-                    <a href="/review/{{id}}"  class="btn btn-primary">{{this.title}} -{{format_date date}}</a>
-                    <a href="/reviews/update/{{id}}" class="btn btn-primary">Edit</a>
+                <li> {{this.title}} -{{format_date date}}
+                    <a href="/review/{{id}}">Read More</a>
+                    <a href="/reviews/update/{{id}}" class="btn btn-info text-info-emphasis fw-bold">Edit</a>
                     <a href="/reviews/delete/{{id}}" class="btn btn-danger">Delete</a>
                 </li>
                 {{/each}}
@@ -24,26 +24,33 @@
                 {{/each}}
             </ul>
         </div>
-        <div>
-            <a href="/reviews/new" class="btn btn-primary">Add New Review</a>
-        </div>
 </section>
 <section>
     <h2>Add a Review</h2>
     <form action="/reviews" method="POST" class="add-review-form">
-        <input type="hidden" name="userId" id="userId" value="{{userId}}">
-        <label for="review-title">Review Title</label>
-        <input type="text" name="review_title" id="review-title">
-        <label for="review-text">Review Text</label>
-        <input type="text" name="review_text" id="review-text">
-        <label for="review-category">Review Category</label>
-        <select id="review-category" name="review_category">
+        <input type="hidden" name="userId" id="userId" value="{{userId}}" class=" bg-info">
+
+        <div class="input-group mb-3">
+        <span for="review-title" class="input-group-text bg-info-subtle border-info text-info-emphasis">Review Title</span>
+        <input type="text" name="review_title" id="review-title" class="form-control bg-info border-info text-info-emphasis fw-bold" placeholder="Type here..">
+        </div>
+
+        <div class="input-group mb-3">
+        <span class="input-group-text bg-info-subtle border-info text-info-emphasis"  for="review-text">Review Text</span>
+        <textarea type="text" name="review_text" id="review-text" class="form-control bg-info border-info text-info-emphasis fw-bold" placeholder="Type here.." rows="3"></textarea>
+        </div>
+
+        <div class="col-mb-3">
+        <label for="review-category" class="form-label text-info-emphasis">Review Category</label>
+        <select class="form-select bg-info-subtle border-info text-info-emphasis fw-bold" id="review-category" name="review_category" required>
+            <option selected disabled value="" class="text-info-emphasis fw-bold">Choose...</option>
             {{#each categories as |category|}}
-            <option value="{{id}}">{{category_name}}</option>
+            <option value="{{id}}" class=" text-info-emphasis">{{category_name}}</option>
             {{/each}}
         </select>
+        </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-info my-3 text-info-emphasis fw-bold">Submit</button>
     </form>
 </section>
 

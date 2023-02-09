@@ -1,15 +1,14 @@
 <section class="card">
     <!-- link to review-details page -->
-    <a href="/review/{{id}}" class="btn">
-    <p class="bg-info-subtle">This is review-details {{title}}</p>
+    <a href="/review/{{id}}">
+    <p class="bg-info-subtle card-header"> {{title}}</p>
 </a>
 <!-- log corresponding username from User table -->
-<a href="/api/users/{{userId}}" class="btn">
-<p> by: {{user.username}}</p>
-<p> on: {{format_date date}}</p>
+<a href="/api/users/{{userId}}">
+<p> by: {{user.username}} on: {{format_date date}}</p>
 </a>
 <!-- log corresponding category name from Category table -->
-<a href="/categories/{{category_id}}" class="btn">
+<a href="/categories/{{category_id}}">
 <p> category: {{category.category_name}}</p>
 </a>
 </section>
