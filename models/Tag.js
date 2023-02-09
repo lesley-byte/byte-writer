@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize'); // import the Model and DataTypes classes from the sequelize package
 const sequelize = require('../config/connection');
 
 class Tag extends Model {}
