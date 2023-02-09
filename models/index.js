@@ -1,9 +1,9 @@
 // require the models in the models folder
-const User = require('./User');
-const Category = require('./Category');
-const Comment = require('./Comment');
-const Review = require('./Review');
-const Tag = require('./Tag');
+const User = require('./user');
+const Category = require('./category');
+const Comment = require('./comment');
+const Review = require('./review');
+const Tag = require('./tag');
 // indicate the relationship between the models... hasMany, belongsTo, etc. as well as the foreign key
 User.hasMany(Review, {
   foreignKey: 'userId',
