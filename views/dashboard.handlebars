@@ -9,17 +9,7 @@
                 <li> {{this.title}} -{{format_date date}}
                     <a href="/review/{{id}}">Read More</a>
                     <a href="/reviews/update/{{id}}" class="btn btn-info text-info-emphasis fw-bold">Edit</a>
-                    <a href="/reviews/delete/{{id}}" class="btn btn-danger">Delete</a>
-                </li>
-                {{/each}}
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <h2>Comments</h2>
-            <ul>
-                {{#each comments}}
-                <li>
-                    <a href="/reviews/{{this.reviewId}}" class="btn">{{this.text}}</a>
+                    <a href="/reviews/delete/{{id}}" class="btn btn-info-subtle border border-info text-info fw-bold">Delete</a>
                 </li>
                 {{/each}}
             </ul>

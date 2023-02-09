@@ -1,14 +1,10 @@
-<section class="card">
+<section class="bg-info-subtle border border-info rounded m-2">
     <!-- link to review-details page -->
-    <a href="/review/{{id}}">
-    <p class="bg-info-subtle card-header"> {{title}}</p>
-</a>
+<p><h4>{{title}}</h4>
+<a href="/review/{{id}}" class="fs-4">Read more...</a>
 <!-- log corresponding username from User table -->
-<a href="/api/users/{{userId}}">
-<p> by: {{user.username}} on: {{format_date date}}</p>
-</a>
+<a href="/api/users/{{userId}}">by: {{user.username}} on: {{format_date date}}</a>
 <!-- log corresponding category name from Category table -->
-<a href="/categories/{{category_id}}">
-<p> category: {{category.category_name}}</p>
-</a>
+<a href="/categories/{{category_id}}">{{category.category_name}}</a>
+</p>
 </section>
